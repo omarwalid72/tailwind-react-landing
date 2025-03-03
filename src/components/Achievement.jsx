@@ -1,63 +1,97 @@
-import React from 'react'
-import Achieve from '../assets/achievement.png'
-import {FaGraduationCap} from 'react-icons/fa'
-import { AiFillVideoCamera } from 'react-icons/ai'
-import { FaPeopleCarry } from 'react-icons/fa'
+import React from "react";
+import Achieve from "../assets/achievement.png";
+import { FaGraduationCap, FaPeopleCarry } from "react-icons/fa";
+import { AiFillVideoCamera } from "react-icons/ai";
+import bg from "../assets/blurry-gradient-haikei.svg";
+
+const achievements = [
+  {
+    icon: <FaGraduationCap />,
+    value: "100 +",
+    label: "Instructors",
+    color: "text-green-400",
+    bg: "bg-green-500/50",
+  },
+  {
+    icon: <AiFillVideoCamera />,
+    value: "10,000 +",
+    label: "Videos",
+    color: "text-cyan-400",
+    bg: "bg-cyan-500/50",
+  },
+  {
+    icon: <FaPeopleCarry />,
+    value: "3000 +",
+    label: "Users",
+    color: "text-yellow-400",
+    bg: "bg-yellow-500/50",
+  },
+  {
+    icon: <FaGraduationCap />,
+    value: "300 +",
+    label: "Students",
+    color: "text-red-400",
+    bg: "bg-red-500/50",
+  },
+];
 
 const Achievement = () => {
   return (
-    <section className='w-full bg-white p-5'>
-        <div className='md:max-w-[1100px] m-auto grid md:grid-cols-2 max-w-[400px]'>
-            <div className='flex flex-col justify-start gap-4'>
-                <h1 className='md:leading-[42px] py-2 text-3xl font-semibold'>
-                    Our <span className='text-[#208486]'>Achievements</span>
-                </h1>
-                <p className=' text-[#536e96] text-2x1'>Leading Companies use the same courses to help their employees keep skill up</p>
-                <div className='grid md:grid-cols-2 grid-cols-1'>
-                    <div className="py-6 flex">
-                        <div className="p-4 bg-[#e9f8f3] rounded-xl">
-                            <FaGraduationCap size={30} style={{ color:'#1a9068' }}/>
-                        </div>
-                        <div className='px-3'>
-                            <h1 className='text-2xl font-semibold'>100 +</h1>
-                            <p className='text-[#60737a]'>Instructors</p>
-                        </div>
-                    </div>
-                    <div className="py-6 flex">
-                        <div className="p-4 bg-[#e9f8f3] rounded-xl">
-                            <AiFillVideoCamera size={30} style={{ color:'#1a9068' }}/>
-                        </div>
-                        <div className='px-3'>
-                            <h1 className='text-2xl font-semibold'>10,000 +</h1>
-                            <p className='text-[#60737a]'>Videos</p>
-                        </div>
-                    </div>
-                    <div className="py-6 flex">
-                        <div className="p-4 bg-[#e9f8f3] rounded-xl">
-                            <FaPeopleCarry size={30} style={{ color:'#1a9068' }}/>
-                        </div>
-                        <div className='px-3'>
-                            <h1 className='text-2xl font-semibold'>3000 +</h1>
-                            <p className='text-[#60737a]'>Users</p>
-                        </div>
-                    </div>
-                    <div className="py-6 flex">
-                        <div className="p-4 bg-[#e9f8f3] rounded-xl">
-                            <FaGraduationCap size={30} style={{ color:'#ed4459' }}/>
-                        </div>
-                        <div className='px-3'>
-                            <h1 className='text-2xl font-semibold'>300 +</h1>
-                            <p className='text-[#60737a]'>Students</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="border justify-center items-center">
-                <img src={Achieve} alt="hero" className='md:order-last m-auto order-first'/>
-            </div>
-        </div>
-    </section>
-  )
-}
+    <section
+      id="achievements"
+      className="w-full text-white py-16 px-6 bg-cover bg-center"
+      style={{ backgroundImage: `url(${bg})` }}
+    >
+      {" "}
+      <div className="md:max-w-[1100px] mx-auto grid md:grid-cols-2 max-w-[400px] items-center">
+        {/* Left Section - Text and Stats */}
+        <div className="flex flex-col justify-start gap-6">
+          <h1 className="md:leading-[42px] text-4xl font-bold">
+            Our{" "}
+            <span className="text-[#104b63] font-bold drop-shadow-lg">
+              Achievements
+            </span>
+          </h1>
+          <p className="text-[#104b63] text-lg">
+            Leading companies use our courses to help their employees level up
+            their skills.
+          </p>
 
-export default Achievement
+          {/* Achievements Grid */}
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
+            {achievements.map((item, index) => (
+              <div
+                key={index}
+                className={`flex items-center p-4 rounded-xl shadow-lg transition-transform transform hover:scale-105 ${item.bg}`}
+              >
+                <div
+                  className={`p-4 rounded-xl shadow-lg ${item.color} bg-opacity-20`}
+                >
+                  {React.cloneElement(item.icon, {
+                    size: 30,
+                    className: `drop-shadow-lg`,
+                  })}
+                </div>
+                <div className="px-3">
+                  <h1 className="text-3xl font-bold">{item.value}</h1>
+                  <p className="text-[#104b63]">{item.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Section - Image */}
+        <div className="flex justify-center items-center">
+          <img
+            src={Achieve}
+            alt="hero"
+            className="w-full max-w-xs md:max-w-md drop-shadow-2xl"
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Achievement;
