@@ -1,6 +1,5 @@
 import React from 'react'
 import Rating from './Rating'
-import blog1 from '../assets/blog-1.png'
 
 
 const CourseCard = ({title,category,rating,price,linkImg}) => {

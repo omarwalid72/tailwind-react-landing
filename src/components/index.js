@@ -2,10 +2,10 @@ import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import Companies from "./Companies";
 import Courses from "./Courses";
-import Achievement from "./Achievement";
-import Categories from "./Categories";
+import AboutUs from "./AboutUs";
+import PartnersSection from "./PartnersSection";
 import FeedBack from "./FeedBack";
 import CTA from "./CTA";
 import Footer from "./Footer";
 
-export { Navbar,HeroSection,Companies,Achievement,Categories,FeedBack,CTA,Footer }
+export { Navbar,HeroSection,Companies,AboutUs,PartnersSection,FeedBack,CTA,Footer }

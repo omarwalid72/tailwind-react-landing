@@ -3,10 +3,9 @@ import {
   HeroSection,
   Navbar,
   Companies,
-  Achievement,
-  Categories,
+  AboutUs,
+  PartnersSection ,
   FeedBack,
-  CTA,
   Footer,
 } from "./components";
 
@@ -16,8 +15,9 @@ function App() {
       <Navbar />
       <HeroSection />
       <Companies />
-      <Achievement />
+      <AboutUs/>
       <FeedBack />
+      <PartnersSection />
       <Footer />
     </div>
   );

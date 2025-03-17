@@ -2,6 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaStar, FaQuoteRight } from 'react-icons/fa';
 import avatar from '../assets/avatar.png';
+import user2 from "../assets/sigmund-jzz_3jWMzHA-unsplash.jpg";
+import user3 from "../assets/alexander-hipp-iEEBWgY_6lA-unsplash.jpg";
+import user4 from "../assets/alex-suprun-ZHvM3XIOHoE-unsplash.jpg";
+
 
 const FeedBackCard = ({ name, role, feedback, image, rating = 5 }) => {
   return (

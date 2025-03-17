@@ -10,7 +10,7 @@ const Navbar = () => {
   const menuItems = [
     { name: "Home", link: "#hero" },
     { name: "Companies", link: "#companies" },
-    { name: "Achievements", link: "#achievements" },
+    { name: "AboutUs", link: "#about-us" },
     { name: "Feedback", link: "#feedback" },
     { name: "Contact", link: "#footer" }
   ];
