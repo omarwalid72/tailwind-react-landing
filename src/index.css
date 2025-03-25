@@ -11,10 +11,20 @@ html,
 body,
 #root,
 .app{
-    height: 100%;
-    width: 100%;
+
     font-family: "Poppins",sans-serif;
 }
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
 
 .input-box-shadow{
     filter: drop-shadow(-4px -4px 44px rgba(0,0,0,0.08));
@@ -32,3 +42,6 @@ body,
 .category:hover,.icon{
     fill: #1a9068;
 }
+.clip-path-polygon {
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  }

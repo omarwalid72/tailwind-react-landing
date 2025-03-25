@@ -1,92 +1,82 @@
-import React from "react";
-import CompanyImage from "../assets/Group1000002729.webp";
+import React, { memo, useRef } from 'react';
+import { motion, useInView } from "framer-motion";
 import { FaLightbulb, FaUsers, FaCogs, FaChartLine } from "react-icons/fa";
 import bg from "../assets/blurry-gradient-haikei.svg";
 
 const aboutDetails = [
   {
-    icon: <FaLightbulb />,
+    icon: FaLightbulb,
     title: "Innovation",
     description: "We leverage cutting-edge technology to create scalable solutions.",
-    color: "text-blue-600",
+    color: "bg-blue-600",
   },
   {
-    icon: <FaUsers />,
+    icon: FaUsers,
     title: "Teamwork",
     description: "Collaboration is at the heart of everything we do.",
-    color: "text-emerald-600",
+    color: "bg-emerald-600",
   },
   {
-    icon: <FaCogs />,
+    icon: FaCogs,
     title: "Expertise",
     description: "Our skilled professionals bring years of experience in development.",
-    color: "text-amber-600",
+    color: "bg-amber-600",
   },
   {
-    icon: <FaChartLine />,
+    icon: FaChartLine,
     title: "Growth",
     description: "We help businesses scale and reach new heights.",
-    color: "text-rose-600",
+    color: "bg-rose-600",
   },
 ];
+
+const FeatureCard = memo(({ item }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { triggerOnce: false, threshold: 0.2 });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="flex flex-col items-center p-5 bg-white/90 rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 w-full text-center"
+    >
+      <div className={`p-3 rounded-full ${item.color} text-white text-2xl`}>
+        <item.icon />
+      </div>
+      <h2 className="text-lg font-semibold text-gray-900 mt-3">{item.title}</h2>
+      <p className="text-xs text-gray-600 mt-1">{item.description}</p>
+    </motion.div>
+  );
+});
 
 const AboutUs = () => {
   return (
     <section
       id="about-us"
-      className="h-screen w-full bg-cover bg-center flex items-center"
-      style={{ backgroundImage: `url(${bg})` }}
+      className="w-full flex flex-col items-center justify-center py-12 px-6 relative overflow-hidden"
+      style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover' }}
     >
-      <div className="max-w-6xl mx-auto px-6 w-full">
-        <div className="flex flex-col md:flex-row items-center gap-10 w-full">
-          {/* Left Section - Image */}
-          <div className="md:w-1/3 w-full flex justify-center items-center">
-          <div className="relative">
-            <img
-              src={CompanyImage}
-              alt="About Us"
-              className="w-32 md:w-40 relative rounded-2xl  transform hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-              srcSet={`${CompanyImage} 1x, ${CompanyImage.replace(".png", "@2x.png")} 2x`}
-            />
-          </div>
-        </div>
+      <div className="container mx-auto">
+        <h1 className="text-3xl font-bold text-gray-900 text-center mb-3">
+          About{" "}
+          <motion.span
+            className="text-blue-700"
+            animate={{ color: ["#104b63", "#1976d2", "#104b63"] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          >
+            Our Company
+          </motion.span>
+        </h1>
+        <p className="text-base text-gray-700 max-w-2xl text-center mx-auto mb-8">
+          We specialize in building high-quality mobile apps and websites, helping businesses thrive in the digital world.
+        </p>
 
-          {/* Right Section - Content */}
-          <div className="md:w-2/3 w-full flex flex-col gap-7">
-            <div className="space-y-4">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-                About <span className="text-[#104b63]">Our Company</span>
-              </h1>
-              <p className="text-base md:text-lg text-gray-700 max-w-2xl leading-relaxed">
-                We specialize in building high-quality mobile apps and websites,
-                helping businesses thrive in the digital world. Our team is dedicated 
-                to delivering tailored solutions.
-              </p>
-            </div>
-
-            {/* Features Grid */}
-            <div className="grid md:grid-cols-2 gap-5 mt-4">
-              {aboutDetails.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-start p-5 bg-white/90 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-                >
-                  <div className={`p-2.5 ${item.color}`}>
-                    {React.cloneElement(item.icon, { size: 26 })}
-                  </div>
-                  <div className="ml-3">
-                    <h2 className="text-lg md:text-xl font-semibold text-gray-900 mb-1.5">
-                      {item.title}
-                    </h2>
-                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-5xl mx-auto">
+          {aboutDetails.map((item, index) => (
+            <FeatureCard key={index} item={item} />
+          ))}
         </div>
       </div>
     </section>

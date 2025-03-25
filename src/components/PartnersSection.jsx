@@ -28,7 +28,16 @@ const PartnersSection = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-3xl md:text-4xl font-bold text-gray-800 mb-4" // Responsive text size
         >
-          Partnering with <span className="text-[#104b63]">Industry Leaders</span>
+          Partnering with <motion.span className="text-[#104b63]"
+          animate={{ 
+            color: ["#104b63", "#1976d2", "#104b63"],
+          }}
+          transition={{ 
+            duration: 8, 
+            ease: "easeInOut", 
+            repeat: Infinity,
+            repeatType: "reverse" 
+          }}>Industry Leaders</motion.span>
         </motion.h2> {/* Changed title text and color */}
 
         <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12"> {/* Added margin bottom */}
